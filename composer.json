@@ -1,0 +1,17 @@
+{
+    "name": "cahtel/todov2",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "a.pupyishev",
+            "email": "a.pupyishev@robo.cash"
+        }
+    ],
+    "require": {}
+}
