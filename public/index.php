@@ -9,8 +9,16 @@ error_log(json_encode($data));
 
 sendAnswer('sendMessage', [
     'chat_id' => $message['chat']['id'],
-    'text' => 'Вот мой ответ!'
+    'text' => 'Вот мой ответ! 😁'
 ]);
+
+sendAnswer('sendMessage', [
+    'chat_id' => $message['chat']['id'],
+    'text' => 'Вот мой ответ!' . hex2bin('F09F9882')
+]);
+
+//подготвить интерфейс на вывод
+//собирать данные для вывода
 
 function sendAnswer($method, $data, $headers = [])
 {
