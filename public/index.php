@@ -7,7 +7,10 @@ $data = json_decode(file_get_contents('php://input'), true);
 $message = $data['message'];
 error_log(json_encode($data));
 
-sendAnswer('sendMessage', ['text' => 'Вот мой ответ!']);
+sendAnswer('sendMessage', [
+    'chat_id' => $message['chat']['id'],
+    'text' => 'Вот мой ответ!'
+]);
 
 function sendAnswer($method, $data, $headers = [])
 {
