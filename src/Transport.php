@@ -4,7 +4,8 @@ namespace App;
 
 class Transport
 {
-    private $botUrl = 'https://api.telegram.org/bot5393296749:AAFNrpq4TTDH9tFmuKVX0FnWvarnKlb7qh0/';
+    private string $botUrl = 'https://api.telegram.org/bot5393296749:AAFNrpq4TTDH9tFmuKVX0FnWvarnKlb7qh0/';
+    private string $serviceUrl = 'https://cahteltodov1.herokuapp.com/';
 
     public function sendAnswer($method, $data, $headers = [])
     {
@@ -19,6 +20,21 @@ class Transport
         ]);
         $result = curl_exec($curl);
         curl_close($curl);
+        return json_decode($result, 1) ?? $result;
+    }
+
+    public function getTodoList()
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_POST => 1,
+            CURLOPT_HEADER => 0,
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $this->serviceUrl . 'getTodayList',
+        ]);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
         return json_decode($result, 1) ?? $result;
     }
 }

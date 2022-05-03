@@ -18,7 +18,12 @@ class App
 
     public function index(array $message, string $chatId): void
     {
-        error_log(json_encode($message));
+        $tasksArr = $this->transport->getTodoList();
+        error_log($tasksArr);
+
+        $tasks = array_map(function ($item) {
+          return new TaskDTO($item['description'], $item['status']);
+        }, $tasksArr);
 
         $tasks[] = new TaskDTO('Дело 1', TaskDTO::STATUS_TODO);
         $tasks[] = new TaskDTO('Дело 2', TaskDTO::STATUS_TODO);
@@ -42,8 +47,6 @@ class App
             $acc .= $task->getText() . static::STATUS_MAP[$task->getStatus()] . "\n";
             return $acc;
             }, '');
-
-        error_log($formattedTasks);
 
         $this->transport->sendAnswer('sendMessage', [
             'chat_id' => $chatId,
