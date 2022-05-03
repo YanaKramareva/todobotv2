@@ -25,15 +25,7 @@ class App
           return new TaskDTO($item['description'], $item['status']);
         }, $tasksArr['tasks']);
 
-        $tasks[] = new TaskDTO('Дело 1', TaskDTO::STATUS_TODO);
-        $tasks[] = new TaskDTO('Дело 2', TaskDTO::STATUS_TODO);
-        $tasks[] = new TaskDTO('Дело 3', TaskDTO::STATUS_TODO);
-        $tasks[] = new TaskDTO('Дело 4', TaskDTO::STATUS_DONE);
-        $tasks[] = new TaskDTO('Дело 5', TaskDTO::STATUS_DONE);
-        $tasks[] = new TaskDTO('Дело 6', TaskDTO::STATUS_DONE);
-
         $this->sendTodoList($tasks, $chatId);
-
     }
 
     /**
