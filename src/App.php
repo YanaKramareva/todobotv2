@@ -44,9 +44,11 @@ class App
             return $formattedTasks;
             }, $formattedTasks);
 
+        error_log($formattedTasks);
+
         $this->transport->sendAnswer('sendMessage', [
             'chat_id' => $chatId,
-            'text' => $formattedTasks,
+            'text' => '1',
         ]);
     }
 }
