@@ -19,7 +19,7 @@ class App
     public function index(array $message, string $chatId): void
     {
         $tasksArr = $this->transport->getTodoList();
-        error_log($tasksArr);
+        error_log(json_encode($tasksArr));
 
         $tasks = array_map(function ($item) {
           return new TaskDTO($item['description'], $item['status']);
