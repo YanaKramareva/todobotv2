@@ -38,11 +38,10 @@ class App
      */
     public function sendTodoList(array $tasks, string $chatId): void
     {
-        $formattedTasks = '';
-        array_reduce($tasks, function (string $formattedTasks, TaskDTO $task) {
+        $formattedTasks = array_reduce($tasks, function (string $formattedTasks, TaskDTO $task) {
             $formattedTasks .= $task->getText() . static::STATUS_MAP[$task->getStatus()] . "\n";
             return $formattedTasks;
-            }, $formattedTasks);
+            }, '');
 
         error_log($formattedTasks);
 
