@@ -11,7 +11,7 @@ class App
         $this->transport = $transport;
     }
 
-    public function index(string $message, string $chatId): void
+    public function index(array $message, string $chatId): void
     {
         error_log(json_encode($message));
 
