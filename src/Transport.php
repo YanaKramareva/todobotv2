@@ -27,7 +27,7 @@ class Transport
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_POST => 1,
+            CURLOPT_POST => 0,
             CURLOPT_HEADER => 0,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $this->serviceUrl . 'getTodayList',
