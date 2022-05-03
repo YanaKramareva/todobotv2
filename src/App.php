@@ -23,7 +23,7 @@ class App
 
         $tasks = array_map(function ($item) {
           return new TaskDTO($item['description'], $item['status']);
-        }, $tasksArr);
+        }, $tasksArr['tasks']);
 
         $tasks[] = new TaskDTO('Дело 1', TaskDTO::STATUS_TODO);
         $tasks[] = new TaskDTO('Дело 2', TaskDTO::STATUS_TODO);
