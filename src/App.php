@@ -39,9 +39,10 @@ class App
     public function sendTodoList(array $tasks, string $chatId): void
     {
         $formattedTasks = '';
-        array_reduce($tasks, function (TaskDTO $task) {
-            return $task->getText() . static::STATUS_MAP[$task->getStatus()] . "\n";
-        }, $formattedTasks);
+        array_reduce($tasks, function (string $formattedTasks, TaskDTO $task) {
+            $formattedTasks .= $task->getText() . static::STATUS_MAP[$task->getStatus()] . "\n";
+            return $formattedTasks;
+            }, $formattedTasks);
 
         $this->transport->sendAnswer('sendMessage', [
             'chat_id' => $chatId,
